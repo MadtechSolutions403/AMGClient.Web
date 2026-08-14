@@ -1,0 +1,1587 @@
+﻿/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #030617;
+    color: white;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    background: rgba(3, 6, 23, 0.82);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: white;
+}
+
+    .logo span {
+        color: #318bff;
+    }
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 38px;
+}
+
+    .nav-links a {
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
+        position: relative;
+        transition: 0.3s;
+    }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient( 90deg, #318bff, #8b5cff );
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #5daeff;
+        }
+
+            .nav-links a:hover::after {
+                width: 100%;
+            }
+
+.menu-button {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 120px 7% 80px;
+    overflow: hidden;
+    background: radial-gradient( circle at 75% 50%, rgba(34, 91, 255, 0.20), transparent 35% ), radial-gradient( circle at 55% 90%, rgba(120, 45, 255, 0.18), transparent 35% ), linear-gradient( 135deg, #030617, #06132d, #030617 );
+}
+
+
+/* =========================================================
+   HERO GLOW
+========================================================= */
+
+.hero-glow {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+.glow-one {
+    right: 5%;
+    top: 10%;
+    background: #176bff;
+    animation: glowMove 7s ease-in-out infinite;
+}
+
+.glow-two {
+    right: 35%;
+    bottom: -15%;
+    background: #7b36ff;
+    animation: glowMove 8s ease-in-out infinite reverse;
+}
+
+
+/* =========================================================
+   BACKGROUND PARTICLES
+========================================================= */
+
+.background-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+    .background-particles span {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: #4da3ff;
+        box-shadow: 0 0 12px #4da3ff;
+        animation: particleMove 5s ease-in-out infinite;
+    }
+
+        .background-particles span:nth-child(1) {
+            top: 20%;
+            left: 55%;
+        }
+
+        .background-particles span:nth-child(2) {
+            top: 70%;
+            left: 60%;
+            animation-delay: 1s;
+        }
+
+        .background-particles span:nth-child(3) {
+            top: 30%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .background-particles span:nth-child(4) {
+            top: 80%;
+            right: 20%;
+            animation-delay: 3s;
+        }
+
+        .background-particles span:nth-child(5) {
+            top: 15%;
+            right: 30%;
+            animation-delay: 1.5s;
+        }
+
+        .background-particles span:nth-child(6) {
+            top: 60%;
+            left: 45%;
+            animation-delay: 2.5s;
+        }
+
+        .background-particles span:nth-child(7) {
+            top: 40%;
+            left: 70%;
+            animation-delay: 3.5s;
+        }
+
+        .background-particles span:nth-child(8) {
+            top: 85%;
+            left: 50%;
+            animation-delay: 4s;
+        }
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-content {
+    width: 50%;
+    position: relative;
+    z-index: 20;
+    animation: heroContentIn 1s ease forwards;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 17px;
+    border-radius: 30px;
+    background: rgba(50, 140, 255, 0.08);
+    border: 1px solid rgba(77, 163, 255, 0.4);
+    color: #62b1ff;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    margin-bottom: 28px;
+}
+
+.badge-star {
+    font-size: 12px;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 6vw, 78px);
+    line-height: 0.98;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+}
+
+    .hero h1 span {
+        background: linear-gradient( 90deg, #318bff, #8b5cff );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+.hero p {
+    max-width: 590px;
+    color: #aeb8ca;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.primary-button,
+.secondary-button {
+    padding: 15px 23px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.primary-button {
+    color: white;
+    background: linear-gradient( 90deg, #318bff, #765cff );
+    box-shadow: 0 12px 35px rgba(49, 139, 255, 0.25);
+}
+
+    .primary-button span {
+        margin-left: 10px;
+        transition: 0.3s;
+    }
+
+    .primary-button:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 45px rgba(49, 139, 255, 0.4);
+    }
+
+        .primary-button:hover span {
+            margin-left: 16px;
+        }
+
+.secondary-button {
+    color: white;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+    .secondary-button:hover {
+        transform: translateY(-4px);
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+
+/* =========================================================
+   HERO MASCOT
+========================================================= */
+
+.hero-mascot-area {
+    width: 47%;
+    height: 600px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mascot-glow {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: radial-gradient( circle, rgba(52, 110, 255, 0.45), rgba(110, 45, 255, 0.20), transparent 70% );
+    filter: blur(25px);
+    animation: mascotGlow 4s ease-in-out infinite;
+}
+
+.mascot-container {
+    position: relative;
+    width: 430px;
+    height: 520px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: mascotFloat 4s ease-in-out infinite;
+}
+
+.mascot-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow( 0 30px 45px rgba(0, 0, 0, 0.5) );
+}
+
+
+/* =========================================================
+   MASCOT RINGS
+========================================================= */
+
+.mascot-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(60, 145, 255, 0.35);
+    z-index: 2;
+}
+
+.ring-one {
+    width: 500px;
+    height: 500px;
+    animation: ringRotate 18s linear infinite;
+}
+
+.ring-two {
+    width: 420px;
+    height: 420px;
+    border-color: rgba(128, 75, 255, 0.35);
+    animation: ringRotateReverse 13s linear infinite;
+}
+
+.ring-three {
+    width: 350px;
+    height: 350px;
+    border-style: dashed;
+    border-color: rgba(60, 145, 255, 0.25);
+    animation: ringRotate 9s linear infinite;
+}
+
+
+/* =========================================================
+   SPEECH BUBBLE
+========================================================= */
+
+.speech-bubble {
+    position: absolute;
+    top: 65px;
+    right: 0;
+    width: 220px;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(7, 13, 35, 0.9);
+    border: 1px solid rgba(77, 163, 255, 0.6);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(15px);
+    z-index: 20;
+    animation: bubbleFloat 4s ease-in-out infinite;
+}
+
+    .speech-bubble strong {
+        display: block;
+        font-size: 19px;
+        margin-bottom: 8px;
+    }
+
+    .speech-bubble span {
+        display: block;
+        color: #aeb8ca;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+
+/* =========================================================
+   MASCOT PARTICLES
+========================================================= */
+
+.mascot-particle {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4da3ff;
+    box-shadow: 0 0 15px #4da3ff;
+    z-index: 5;
+}
+
+.p1 {
+    top: 20%;
+    left: 12%;
+    animation: particleOne 4s ease-in-out infinite;
+}
+
+.p2 {
+    top: 70%;
+    right: 8%;
+    background: #9368ff;
+    box-shadow: 0 0 15px #9368ff;
+    animation: particleTwo 5s ease-in-out infinite;
+}
+
+.p3 {
+    bottom: 18%;
+    left: 20%;
+    animation: particleThree 4s ease-in-out infinite;
+}
+
+.p4 {
+    top: 30%;
+    right: 22%;
+    background: #9368ff;
+    animation: particleTwo 6s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.products-section {
+    padding: 120px 7%;
+    background: #060b1b;
+}
+
+.section-heading {
+    max-width: 750px;
+    margin: 0 auto 70px;
+    text-align: center;
+}
+
+.section-badge {
+    display: inline-block;
+    padding: 8px 17px;
+    border-radius: 30px;
+    border: 1px solid rgba(77, 163, 255, 0.3);
+    background: rgba(77, 163, 255, 0.08);
+    color: #5daeff;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    font-size: clamp(38px, 5vw, 60px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+    .section-heading h2 span {
+        display: block;
+        background: linear-gradient( 90deg, #4da3ff, #9b6cff );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+.section-heading p {
+    color: #9ba7bc;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.products-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.product-card {
+    overflow: hidden;
+    border-radius: 22px;
+    background: linear-gradient( 145deg, rgba(20, 30, 55, 0.95), rgba(8, 14, 30, 0.95) );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: 0.4s;
+}
+
+    .product-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(77, 163, 255, 0.45);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    }
+
+.product-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+    .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.6s;
+    }
+
+.product-card:hover
+.product-image img {
+    transform: scale(1.08);
+}
+
+.product-content {
+    padding: 30px;
+}
+
+.product-number {
+    color: #4da3ff;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.product-content h3 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.product-content p {
+    color: #9da9bd;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.product-button {
+    display: inline-block;
+    padding: 11px 18px;
+    border-radius: 7px;
+    background: rgba(77, 163, 255, 0.1);
+    border: 1px solid rgba(77, 163, 255, 0.25);
+    color: #62b1ff;
+    transition: 0.3s;
+}
+
+    .product-button:hover {
+        background: #4da3ff;
+        color: white;
+        transform: translateX(5px);
+    }
+
+
+/* =========================================================
+   CONTACT SECTION
+========================================================= */
+
+.contact-section {
+    padding: 120px 7%;
+    background: linear-gradient( 135deg, #030617, #08152e );
+    overflow: hidden;
+}
+
+.contact-container {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 60px;
+    align-items: center;
+}
+
+
+/* =========================================================
+   CONTACT INFORMATION
+========================================================= */
+
+.contact-info {
+    position: relative;
+    z-index: 20;
+}
+
+    .contact-info h2 {
+        font-size: clamp(38px, 5vw, 58px);
+        line-height: 1.1;
+        margin-bottom: 25px;
+    }
+
+        .contact-info h2 span {
+            display: block;
+            background: linear-gradient( 90deg, #4da3ff, #9b6cff );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+    .contact-info > p {
+        color: #9ba7bc;
+        line-height: 1.8;
+        margin-bottom: 35px;
+    }
+
+
+/* =========================================================
+   CONTACT ITEMS
+========================================================= */
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.contact-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(77, 163, 255, 0.1);
+    border: 1px solid rgba(77, 163, 255, 0.2);
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.contact-item:hover .contact-icon {
+    transform: translateY(-3px);
+    background: rgba(77, 163, 255, 0.18);
+    border-color: rgba(77, 163, 255, 0.45);
+}
+
+.contact-item small {
+    display: block;
+    color: #7f8ba3;
+    margin-bottom: 5px;
+}
+
+.contact-item strong {
+    display: block;
+    color: white;
+}
+
+
+/* =========================================================
+   WHATSAPP BUTTON
+========================================================= */
+
+.whatsapp-button {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: fit-content;
+    margin-top: 32px;
+    padding: 13px 18px;
+    border-radius: 14px;
+    background: linear-gradient( 135deg, #075e54, #128c7e );
+    border: 1px solid rgba(37, 211, 102, 0.35);
+    color: white;
+    box-shadow: 0 12px 35px rgba(18, 140, 126, 0.22);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .whatsapp-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 18px 45px rgba(18, 140, 126, 0.4);
+    }
+
+.whatsapp-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+}
+
+    .whatsapp-icon svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+.whatsapp-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+    .whatsapp-text strong {
+        font-size: 14px;
+    }
+
+    .whatsapp-text small {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.72);
+    }
+
+.whatsapp-arrow {
+    margin-left: 8px;
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-button:hover
+.whatsapp-arrow {
+    transform: translateX(5px);
+}
+
+
+/* =========================================================
+   CONTACT VISUAL
+========================================================= */
+
+.contact-visual {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CONTACT GLOW
+========================================================= */
+
+.contact-glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: radial-gradient( circle, rgba(49, 139, 255, 0.42), rgba(117, 70, 255, 0.23), transparent 70% );
+    filter: blur(28px);
+    animation: contactGlowPulse 4s ease-in-out infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTACT AVATAR
+========================================================= */
+
+.contact-avatar {
+    position: relative;
+    width: 350px;
+    height: 410px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    animation: contactAvatarFloat 5s ease-in-out infinite;
+    transition: transform 0.4s ease;
+}
+
+.contact-avatar-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 350px;
+    max-height: 410px;
+    object-fit: contain;
+    object-position: center;
+    filter: drop-shadow( 0 25px 35px rgba(0, 0, 0, 0.45) );
+    transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+
+/* =========================================================
+   AVATAR HOVER
+========================================================= */
+
+.contact-avatar:hover {
+    animation-play-state: paused;
+    transform: translateY(-8px);
+}
+
+    .contact-avatar:hover
+    .contact-avatar-image {
+        transform: scale(1.035) rotate(1deg);
+        filter: drop-shadow( 0 30px 50px rgba(49, 139, 255, 0.35) );
+    }
+
+.contact-avatar.avatar-active {
+    transform: translateY(-8px);
+}
+
+
+/* =========================================================
+   CONTACT ROTATING RINGS
+========================================================= */
+
+.contact-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(77, 163, 255, 0.28);
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.8;
+}
+
+.contact-ring-one {
+    width: 430px;
+    height: 430px;
+    animation: contactRingRotate 18s linear infinite;
+}
+
+.contact-ring-two {
+    width: 350px;
+    height: 350px;
+    border-color: rgba(140, 90, 255, 0.35);
+    border-style: dashed;
+    animation: contactRingRotateReverse 12s linear infinite;
+}
+
+.contact-ring-three {
+    width: 285px;
+    height: 285px;
+    border-color: rgba(77, 163, 255, 0.18);
+    animation: contactRingRotate 9s linear infinite;
+}
+
+
+/* =========================================================
+   CONTACT PARTICLES
+========================================================= */
+
+.contact-particle {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4da3ff;
+    box-shadow: 0 0 15px rgba(77, 163, 255, 0.9);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.cp-one {
+    top: 16%;
+    left: 16%;
+    animation: contactParticleOne 4s ease-in-out infinite;
+}
+
+.cp-two {
+    top: 22%;
+    right: 14%;
+    background: #956bff;
+    box-shadow: 0 0 15px rgba(149, 107, 255, 0.9);
+    animation: contactParticleTwo 5s ease-in-out infinite;
+}
+
+.cp-three {
+    bottom: 18%;
+    left: 16%;
+    animation: contactParticleThree 4.5s ease-in-out infinite;
+}
+
+.cp-four {
+    bottom: 15%;
+    right: 17%;
+    background: #956bff;
+    box-shadow: 0 0 15px rgba(149, 107, 255, 0.9);
+    animation: contactParticleTwo 6s ease-in-out infinite;
+}
+
+.cp-five {
+    top: 50%;
+    right: 7%;
+    width: 5px;
+    height: 5px;
+    animation: contactParticleOne 5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CONTACT FLOATING MESSAGE
+========================================================= */
+
+.contact-floating-message {
+    position: absolute;
+    top: 30px;
+    right: 2%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 175px;
+    padding: 13px 15px;
+    border-radius: 16px;
+    background: rgba(7, 13, 35, 0.94);
+    border: 1px solid rgba(77, 163, 255, 0.35);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+    z-index: 30;
+    animation: contactMessageFloat 4s ease-in-out infinite;
+}
+
+.floating-message-icon {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+    background: rgba(77, 163, 255, 0.12);
+    font-size: 20px;
+}
+
+.contact-floating-message strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.contact-floating-message small {
+    display: block;
+    color: #8f9bb3;
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 30px 7%;
+    text-align: center;
+    color: #6f7b91;
+    background: #020411;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+/* =========================================================
+   GENERAL ANIMATIONS
+========================================================= */
+
+@keyframes heroContentIn {
+
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+@keyframes mascotFloat {
+
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-18px) rotate(1deg);
+    }
+}
+
+
+@keyframes mascotGlow {
+
+    0%, 100% {
+        transform: scale(0.9);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+
+@keyframes bubbleFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+@keyframes ringRotate {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes ringRotateReverse {
+
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+@keyframes glowMove {
+
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-30px, -30px);
+    }
+}
+
+
+@keyframes particleMove {
+
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translateY(-25px);
+        opacity: 1;
+    }
+}
+
+
+@keyframes particleOne {
+
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(25px, -30px);
+    }
+}
+
+
+@keyframes particleTwo {
+
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-25px, 20px);
+    }
+}
+
+
+@keyframes particleThree {
+
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(15px, -25px);
+    }
+}
+
+
+/* =========================================================
+   CONTACT ANIMATIONS
+========================================================= */
+
+@keyframes contactAvatarFloat {
+
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(0.7deg);
+    }
+}
+
+
+@keyframes contactGlowPulse {
+
+    0%, 100% {
+        transform: scale(0.90);
+        opacity: 0.55;
+    }
+
+    50% {
+        transform: scale(1.12);
+        opacity: 0.95;
+    }
+}
+
+
+@keyframes contactRingRotate {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes contactRingRotateReverse {
+
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+@keyframes contactMessageFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+
+@keyframes contactParticleOne {
+
+    0%, 100% {
+        transform: translate(0, 0);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translate(25px, -30px);
+        opacity: 1;
+    }
+}
+
+
+@keyframes contactParticleTwo {
+
+    0%, 100% {
+        transform: translate(0, 0);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translate(-25px, 25px);
+        opacity: 1;
+    }
+}
+
+
+@keyframes contactParticleThree {
+
+    0%, 100% {
+        transform: translate(0, 0);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translate(15px, -25px);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    /* HERO */
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 130px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-mascot-area {
+        width: 100%;
+        height: 500px;
+        margin-top: 20px;
+    }
+
+    .speech-bubble {
+        right: 8%;
+        top: 40px;
+    }
+
+
+    /* PRODUCTS */
+
+    .products-container {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* CONTACT */
+
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+
+        .contact-info > p {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 600px;
+        }
+
+    .contact-item {
+        justify-content: center;
+    }
+
+    .whatsapp-button {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contact-visual {
+        min-height: 480px;
+        margin-top: 10px;
+        overflow: hidden;
+    }
+
+    .contact-avatar {
+        width: 340px;
+        height: 390px;
+    }
+
+    .contact-avatar-image {
+        max-width: 340px;
+        max-height: 390px;
+    }
+
+    .contact-ring-one {
+        width: 410px;
+        height: 410px;
+    }
+
+    .contact-ring-two {
+        width: 335px;
+        height: 335px;
+    }
+
+    .contact-ring-three {
+        width: 270px;
+        height: 270px;
+    }
+
+    .contact-floating-message {
+        top: 20px;
+        right: 4%;
+    }
+
+
+    /* MOBILE NAVIGATION */
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        background: #050816;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    }
+
+        .nav-links.active {
+            display: flex;
+        }
+
+        .nav-links a {
+            width: 100%;
+            padding: 18px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+    .menu-button {
+        display: block;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 550px) {
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        padding: 120px 5% 60px;
+    }
+
+        .hero h1 {
+            font-size: 46px;
+            letter-spacing: -1px;
+        }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .primary-button,
+    .secondary-button {
+        width: 220px;
+        text-align: center;
+    }
+
+    .hero-mascot-area {
+        height: 430px;
+    }
+
+    .mascot-container {
+        width: 300px;
+        height: 400px;
+    }
+
+    .ring-one {
+        width: 360px;
+        height: 360px;
+    }
+
+    .ring-two {
+        width: 310px;
+        height: 310px;
+    }
+
+    .ring-three {
+        width: 260px;
+        height: 260px;
+    }
+
+    .speech-bubble {
+        width: 180px;
+        padding: 15px;
+        right: 0;
+        top: 20px;
+    }
+
+        .speech-bubble strong {
+            font-size: 16px;
+        }
+
+        .speech-bubble span {
+            font-size: 12px;
+        }
+
+
+    /* SECTIONS */
+
+    .products-section,
+    .contact-section {
+        padding: 90px 5%;
+    }
+
+
+    /* CONTACT */
+
+    .contact-info h2 {
+        font-size: 42px;
+    }
+
+    .contact-item {
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .contact-visual {
+        min-height: 390px;
+    }
+
+    .contact-avatar {
+        width: 280px;
+        height: 320px;
+    }
+
+    .contact-avatar-image {
+        max-width: 280px;
+        max-height: 320px;
+    }
+
+    .contact-ring-one {
+        width: 320px;
+        height: 320px;
+    }
+
+    .contact-ring-two {
+        width: 265px;
+        height: 265px;
+    }
+
+    .contact-ring-three {
+        width: 215px;
+        height: 215px;
+    }
+
+    .contact-floating-message {
+        top: 0;
+        right: 0;
+        min-width: 150px;
+        padding: 9px 11px;
+    }
+
+    .floating-message-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+
+    .contact-floating-message strong {
+        font-size: 12px;
+    }
+
+    .contact-floating-message small {
+        font-size: 10px;
+    }
+
+    .whatsapp-button {
+        width: 100%;
+        max-width: 330px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .contact-avatar {
+        width: 245px;
+        height: 285px;
+    }
+
+    .contact-avatar-image {
+        max-width: 245px;
+        max-height: 285px;
+    }
+
+    .contact-ring-one {
+        width: 285px;
+        height: 285px;
+    }
+
+    .contact-ring-two {
+        width: 235px;
+        height: 235px;
+    }
+
+    .contact-ring-three {
+        width: 190px;
+        height: 190px;
+    }
+
+    .contact-floating-message {
+        transform: scale(0.9);
+        transform-origin: top right;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
